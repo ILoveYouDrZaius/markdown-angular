@@ -1,0 +1,4 @@
+<div *ngIf="note">
+    <note-form [note]="note" (onNoteChanged)="noteChanged($event)"></note-form>
+    <note-preview [note]=note></note-preview>
+</div>

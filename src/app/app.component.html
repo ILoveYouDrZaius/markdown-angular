@@ -2,4 +2,7 @@
                 (onNoteChanged)="noteChanged($event)">
 </app-note-view>
 
-<app-notes-list [notes]="notes" (newNote)="createNewNote()"></app-notes-list>
+<app-notes-list [notes]="notes" 
+                (newNote)="createNewNote()"
+                (editNote)="edit($event)"
+                (deleteNote)="deleteNote($event)"></app-notes-list>

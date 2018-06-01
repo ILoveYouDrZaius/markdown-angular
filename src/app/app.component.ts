@@ -9,7 +9,7 @@ import { NoteService } from './note-service.service';
 })
 export class AppComponent implements OnInit {
   title: string = 'Markdown editor';
-  note: string = '';
+  note: Note = null;
 
   notes: Note[] = []
 
@@ -22,9 +22,10 @@ export class AppComponent implements OnInit {
   }
 
   
-  noteChanges(value: string) : void {
-    this.note = value;
-    localStorage.setItem('note', this.note);
+  noteChanged(note: Note) : void {
+    this.notesService.saveNote(note);
+    this.edit(note.id);
+    // localStorage.setItem('note', this.note);
   }
   
   createNewNote() {
@@ -36,8 +37,18 @@ export class AppComponent implements OnInit {
     this.notesService.saveNote(newNote);
     this.getAllNotes();
   }
-  
+
   private getAllNotes() {
     this.notes = this.notesService.findAll();
   }
+
+  edit(noteId) {
+    this.note = this.notesService.findOne(noteId);
+  }
+
+  deleteNote(noteId: string) {
+    this.notesService.removeNote(noteId);
+    this.getAllNotes();
+  }
+
 }
