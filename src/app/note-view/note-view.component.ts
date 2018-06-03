@@ -16,8 +16,8 @@ export class NoteViewComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  ngOnChanges(changes: SimpleChanges) : void {
-    if(changes['note'] && changes['note'].currentValue) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['note'] && changes['note'].currentValue) {
       const note: Note = changes['note'].currentValue;
       this.note = {
         id: note.id,

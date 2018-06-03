@@ -18,9 +18,9 @@ export class NoteService {
   }
 
   saveNote(note: Note) {
-    if(!note.id) {
-      note.id = `${Math.random()*1000000}`;
-      const allIds:string[] = this.getAllIds();
+    if (!note.id) {
+      note.id = `${Math.random() * 1000000}`;
+      const allIds: string[] = this.getAllIds();
 
       const newIdList = [...allIds, note.id];
       localStorage.setItem('allIds', JSON.stringify(newIdList));
@@ -34,14 +34,14 @@ export class NoteService {
 
     const allIds = this.getAllIds()
       .filter(noteId => noteId !== id);
-    
+
     localStorage.setItem('allIds', JSON.stringify(allIds));
   }
 
   private getAllIds() {
-    let result = localStorage.getItem('allIds');
-    
-    if(!result) {
+    const result = localStorage.getItem('allIds');
+
+    if (!result) {
       return [];
     }
 
